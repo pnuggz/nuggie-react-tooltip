@@ -1,0 +1,35 @@
+{
+  "config": {
+    "title": "Nuggie React Tooltip",
+    "description": "My awesome app using docz",
+    "menu": [],
+    "version": "0.1.0",
+    "repository": null,
+    "native": false,
+    "codeSandbox": true,
+    "themeConfig": {},
+    "separator": "-"
+  },
+  "entries": [
+    {
+      "key": "docs/Tooltip.mdx",
+      "value": {
+        "name": "Tooltip",
+        "id": "2d1a67cd7a0e8157f636b991b87d2aec",
+        "filepath": "docs/Tooltip.mdx",
+        "link": "",
+        "slug": "docs-tooltip",
+        "route": "/docs-tooltip",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "tooltip",
+            "depth": 1,
+            "value": "Tooltip"
+          }
+        ]
+      }
+    }
+  ],
+  "props": []
+}
