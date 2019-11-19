@@ -33,71 +33,6 @@
   ],
   "props": [
     {
-      "key": "src\\index.js",
-      "value": [
-        {
-          "description": "",
-          "displayName": "Tooltip",
-          "methods": [],
-          "actualName": "Tooltip",
-          "props": {
-            "idProp": {
-              "type": {
-                "name": "string"
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "'nuggie-tooltip-default'",
-                "computed": false
-              }
-            },
-            "defaultDisplay": {
-              "type": {
-                "name": "bool"
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "false",
-                "computed": false
-              }
-            },
-            "children": {
-              "type": {
-                "name": "node"
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "null",
-                "computed": false
-              }
-            },
-            "tooltipRender": {
-              "type": {
-                "name": "union",
-                "value": [
-                  {
-                    "name": "node"
-                  },
-                  {
-                    "name": "string"
-                  }
-                ]
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "null",
-                "computed": false
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
       "key": "src\\tooltip.js",
       "value": [
         {
@@ -106,36 +41,6 @@
           "methods": [],
           "actualName": "Tooltip",
           "props": {
-            "idProp": {
-              "type": {
-                "name": "string"
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "'nuggie-tooltip-default'",
-                "computed": false
-              }
-            },
-            "tooltipRender": {
-              "type": {
-                "name": "union",
-                "value": [
-                  {
-                    "name": "node"
-                  },
-                  {
-                    "name": "string"
-                  }
-                ]
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "null",
-                "computed": false
-              }
-            },
             "targetDimLeft": {
               "type": {
                 "name": "number"
@@ -166,6 +71,91 @@
               "description": "",
               "defaultValue": {
                 "value": "0",
+                "computed": false
+              }
+            },
+            "targetId": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "'nuggie-tooltip-default'",
+                "computed": false
+              }
+            },
+            "tooltipRender": {
+              "type": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "node"
+                  },
+                  {
+                    "name": "string"
+                  }
+                ]
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "null",
+                "computed": false
+              }
+            },
+            "placement": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "'auto'",
+                "computed": false
+              }
+            },
+            "outerClassName": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "''",
+                "computed": false
+              }
+            },
+            "innerClassName": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "''",
+                "computed": false
+              }
+            },
+            "arrowClassName": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "''",
+                "computed": false
+              }
+            },
+            "placementPrefix": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "null",
                 "computed": false
               }
             }

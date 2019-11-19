@@ -1,6 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import TooltipWrapper from './tooltipWrapper';
+import TooltipWrapper, {
+  propTypes as tooltipWrapperPropTypes,
+  defaultProps as tooltipWrapperDefaultProps,
+} from './tooltipWrapper';
 
 const Tooltip = props => {
   const { idProp, children, tooltipRender, defaultDisplay } = props;
@@ -14,18 +16,7 @@ const Tooltip = props => {
   );
 };
 
-Tooltip.propTypes = {
-  idProp: PropTypes.string,
-  defaultDisplay: PropTypes.bool,
-  children: PropTypes.node,
-  tooltipRender: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-};
-
-Tooltip.defaultProps = {
-  idProp: 'nuggie-tooltip-default',
-  defaultDisplay: false,
-  children: null,
-  tooltipRender: null,
-};
+Tooltip.propTypes = tooltipWrapperPropTypes;
+Tooltip.defaultProps = tooltipWrapperDefaultProps;
 
 export default Tooltip;

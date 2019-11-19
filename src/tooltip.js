@@ -1,8 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+export const propTypes = {
+  targetDimLeft: PropTypes.number,
+  targetDimTop: PropTypes.number,
+  targetDimWidth: PropTypes.number,
+  targetId: PropTypes.string,
+  tooltipRender: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+  placement: PropTypes.string,
+  outerClassName: PropTypes.string,
+  innerClassName: PropTypes.string,
+  arrowClassName: PropTypes.string,
+  placementPrefix: PropTypes.string,
+};
+
+export const defaultProps = {
+  targetDimLeft: 0,
+  targetDimTop: 0,
+  targetDimWidth: 0,
+  targetId: 'nuggie-tooltip-default',
+  tooltipRender: null,
+  placement: 'auto',
+  outerClassName: '',
+  innerClassName: '',
+  arrowClassName: '',
+  placementPrefix: null,
+};
+
 const Tooltip = props => {
-  const { idProp, tooltipRender, targetDimLeft, targetDimTop, targetDimWidth } = props;
+  const {
+    idProp,
+    tooltipRender,
+    targetDimLeft,
+    targetDimTop,
+    targetDimWidth,
+    outerClassName,
+    innerClassName,
+    arrowClassName,
+  } = props;
 
   const tooltipContentPositioning = {
     position: 'absolute',
@@ -29,29 +64,16 @@ const Tooltip = props => {
   };
 
   return (
-    <span style={tooltipContentPositioning}>
-      <span id={`${idProp}-content`} style={tooltipContentStyle}>
+    <span className={`tooltip bs-tooltip-auto ${outerClassName}`} x-placement="auto">
+      <span className={`tooltip-inner ${innerClassName}`} id={`${idProp}-content`}>
         {tooltipRender}
-        <span style={tooltipArrowStyle} />
+        <span className={arrowClassName} style={tooltipArrowStyle} />
       </span>
     </span>
   );
 };
 
-Tooltip.propTypes = {
-  idProp: PropTypes.string,
-  tooltipRender: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-  targetDimLeft: PropTypes.number,
-  targetDimTop: PropTypes.number,
-  targetDimWidth: PropTypes.number,
-};
-
-Tooltip.defaultProps = {
-  idProp: 'nuggie-tooltip-default',
-  tooltipRender: null,
-  targetDimLeft: 0,
-  targetDimTop: 0,
-  targetDimWidth: 0,
-};
+Tooltip.propTypes = propTypes;
+Tooltip.defaultProps = defaultProps;
 
 export default Tooltip;
