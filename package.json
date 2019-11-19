@@ -44,6 +44,7 @@
     "react-testing-library": "^4.1.9"
   },
   "dependencies": {
+    "core-js": "^3.4.1",
     "prop-types": "^15.7.2"
   }
 }
