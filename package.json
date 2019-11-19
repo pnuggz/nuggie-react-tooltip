@@ -44,7 +44,8 @@
     "react-testing-library": "^4.1.9"
   },
   "dependencies": {
-    "core-js": "^3.4.1",
+    "@babel/polyfill": "^7.7.0",
+    "core-js": "^2.6.10",
     "prop-types": "^15.7.2"
   }
 }
