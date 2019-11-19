@@ -3,13 +3,14 @@ name: Tooltip
 ---
 
 import Tooltip from './../src';
-import { Playground, PropsTable } from 'docz';
+import { Playground, Props } from 'docz';
 
 # Tooltip
 
+<Props of={Tooltip} />
 
 <Playground key="TEST">
-  <Tooltip key="TEST1" render="HEY THERE">
-    Hover over me
+  <Tooltip idProp="tooltiptest" tooltipRender="HEY THERE">
+    <button type="button">TEST</button>
   </Tooltip>
 </Playground>
