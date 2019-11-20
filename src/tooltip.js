@@ -16,7 +16,7 @@ export const propTypes = {
 export const defaultProps = {
   targetId: 'nuggie-tooltip-default',
   tooltipRender: null,
-  placement: 'top',
+  placement: 'auto',
   outerClassName: '',
   innerClassName: '',
   arrowClassName: 'arrow',

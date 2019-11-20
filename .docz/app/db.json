@@ -8,10 +8,7 @@
     "native": false,
     "codeSandbox": true,
     "themeConfig": {},
-    "separator": "-",
-    "plugins": [
-      {}
-    ]
+    "separator": "-"
   },
   "entries": [
     {
@@ -35,20 +32,6 @@
     }
   ],
   "props": [
-    {
-      "key": "src\\index.js",
-      "value": [
-        {
-          "description": "",
-          "displayName": "Tooltip",
-          "methods": [],
-          "actualName": "Tooltip",
-          "composes": [
-            "./tooltipWrapper"
-          ]
-        }
-      ]
-    },
     {
       "key": "src\\tooltip.js",
       "value": [
@@ -95,7 +78,7 @@
               "required": false,
               "description": "",
               "defaultValue": {
-                "value": "'top'",
+                "value": "'auto'",
                 "computed": false
               }
             },
@@ -128,7 +111,7 @@
               "required": false,
               "description": "",
               "defaultValue": {
-                "value": "''",
+                "value": "'arrow'",
                 "computed": false
               }
             },
@@ -155,6 +138,52 @@
               }
             }
           }
+        }
+      ]
+    },
+    {
+      "key": "src\\tooltipWrapper.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "TooltipWrapper",
+          "methods": [],
+          "actualName": "TooltipWrapper",
+          "props": {
+            "defaultDisplay": {
+              "type": {
+                "name": "bool"
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "false",
+                "computed": false
+              }
+            },
+            "children": {
+              "type": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "node"
+                  },
+                  {
+                    "name": "string"
+                  }
+                ]
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "null",
+                "computed": false
+              }
+            }
+          },
+          "composes": [
+            "./tooltip"
+          ]
         }
       ]
     }

@@ -23,28 +23,28 @@ const TooltipWrapper = props => {
   const { targetId, children, tooltipRender, defaultDisplay, placement } = props;
 
   const [isDisplay, setIsDisplay] = useState(defaultDisplay);
+  const [domNode, setDomNode] = useState(null)
 
-  let domNode = document.getElementById(targetId);
-  if (!domNode) {
-    domNode = document.createElement('div');
-    domNode.setAttribute('id', targetId);
-    // domNode.setAttribute('data-testid', targetId);
-    domNode.setAttribute('key', targetId);
-    document.body.appendChild(domNode);
-  }
+  useEffect(() => {
+    setDomNode(document.getElementById(targetId).parentNode)
+  }, [])
 
   const sourceRef = useRef(null);
 
   const showTooltip = () => {
-    setIsDisplay(!defaultDisplay);
+    if(isDisplay !== !defaultDisplay) {
+      setIsDisplay(!defaultDisplay);
+    }
   };
 
   const hideTooltip = () => {
-    setIsDisplay(defaultDisplay);
+    if(isDisplay !== defaultDisplay) {
+      setIsDisplay(defaultDisplay);
+    }
   };
 
   const renderToolTip = () => {
-    if (!isDisplay || !sourceRef) {
+    if (!isDisplay) {
       return null;
     }
 
@@ -54,28 +54,31 @@ const TooltipWrapper = props => {
     );
   };
 
-  const tooltipWrapper = () => (
-    <span
-      key={targetId}
-      id={targetId}
-      onMouseEnter={showTooltip}
-      onMouseLeave={hideTooltip}
-      onFocus={showTooltip}
-      onBlur={hideTooltip}
-      ref={sourceRef}
-      tabIndex="0"
-      role="button"
-      aria-describedby={`${targetId}-content`}
-    >
-      {children}
+  return (
+    <span className={'tooltip-wrapper'} key={`${targetId}-wrapper`}>
+      <span
+        key={targetId}
+        id={targetId}
+        onMouseEnter={showTooltip}
+        onMouseLeave={hideTooltip}
+        onFocus={showTooltip}
+        onBlur={hideTooltip}
+        ref={sourceRef}
+        tabIndex="0"
+        role="button"
+        aria-describedby={`${targetId}-content`}
+        style={{display: 'table-cell'}}
+      >
+        {children}
+      </span>
+      {renderToolTip()}
     </span>
   );
 
   useEffect(() => {
-    renderToolTip();
+    console.log("NEW")
+    console.log(isDisplay)
   }, [isDisplay]);
-
-  return [tooltipWrapper(), renderToolTip()];
 };
 
 TooltipWrapper.propTypes = propTypes;
