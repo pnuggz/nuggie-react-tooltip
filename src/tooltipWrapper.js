@@ -76,8 +76,6 @@ const TooltipWrapper = props => {
   );
 
   useEffect(() => {
-    console.log("NEW")
-    console.log(isDisplay)
   }, [isDisplay]);
 };
 
