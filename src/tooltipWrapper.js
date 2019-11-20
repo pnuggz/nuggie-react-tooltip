@@ -40,7 +40,7 @@ const TooltipWrapper = props => {
   };
 
   const hideTooltip = () => {
-    setIsDisplay(!defaultDisplay);
+    setIsDisplay(defaultDisplay);
   };
 
   const renderToolTip = () => {

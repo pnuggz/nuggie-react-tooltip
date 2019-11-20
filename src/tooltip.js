@@ -44,11 +44,11 @@ const Tooltip = props => {
 
   return (
     <ReactPopper referenceElement={sourceRef} modifiers={extendedModifiers} placement={placement}>
-      {({ ref, style, placement, arrowProps }) => (
+      {({ ref, style, placement: popperPlacement, arrowProps }) => (
         <span
           ref={ref}
           style={style}
-          className={`tooltip ${placementPrefix + placement} ${outerClassName}`}
+          className={`tooltip show ${placementPrefix + popperPlacement} ${outerClassName}`}
           x-placement={placement}
         >
           <span className={`tooltip-inner ${innerClassName}`} id={`${targetId}-content`}>
