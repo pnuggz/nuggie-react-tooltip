@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Popper as ReactPopper } from 'react-popper';
 
 export const propTypes = {
-  targetDimLeft: PropTypes.number,
-  targetDimTop: PropTypes.number,
-  targetDimWidth: PropTypes.number,
   targetId: PropTypes.string,
   tooltipRender: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
   placement: PropTypes.string,
@@ -12,47 +10,31 @@ export const propTypes = {
   innerClassName: PropTypes.string,
   arrowClassName: PropTypes.string,
   placementPrefix: PropTypes.string,
+  sourceRef: PropTypes.object,
 };
 
 export const defaultProps = {
-  targetDimLeft: 0,
-  targetDimTop: 0,
-  targetDimWidth: 0,
   targetId: 'nuggie-tooltip-default',
   tooltipRender: null,
-  placement: 'auto',
+  placement: 'top',
   outerClassName: '',
   innerClassName: '',
   arrowClassName: '',
-  placementPrefix: null,
+  placementPrefix: 'bs-tooltip-',
+  sourceRef: null,
 };
 
 const Tooltip = props => {
   const {
-    idProp,
+    targetId,
     tooltipRender,
-    targetDimLeft,
-    targetDimTop,
-    targetDimWidth,
     outerClassName,
     innerClassName,
     arrowClassName,
+    placement,
+    placementPrefix,
+    sourceRef,
   } = props;
-
-  const tooltipContentPositioning = {
-    position: 'absolute',
-    bottom: window.innerHeight - targetDimTop + 10 - window.scrollY,
-    left: targetDimLeft + targetDimWidth / 2 + window.scrollX,
-  };
-
-  const tooltipContentStyle = {
-    position: 'relative',
-    left: '-50%',
-    padding: '8px 16px',
-    borderRadius: 4,
-    background: '#424242',
-    color: 'white',
-  };
 
   const tooltipArrowStyle = {
     position: 'absolute',
@@ -63,13 +45,28 @@ const Tooltip = props => {
     borderColor: '#424242 transparent transparent transparent',
   };
 
+  const extendedModifiers = {
+    offset: 0,
+    flip: { enabled: true, behavior: 'flip' },
+    preventOverflow: 'scrollParent',
+  };
+
   return (
-    <span className={`tooltip bs-tooltip-auto ${outerClassName}`} x-placement="auto">
-      <span className={`tooltip-inner ${innerClassName}`} id={`${idProp}-content`}>
-        {tooltipRender}
-        <span className={arrowClassName} style={tooltipArrowStyle} />
-      </span>
-    </span>
+    <ReactPopper referenceElement={sourceRef} modifiers={extendedModifiers} placement={placement}>
+      {({ ref, style, placement, arrowProps }) => (
+        <span
+          ref={ref}
+          style={style}
+          className={`tooltip ${placementPrefix + placement} ${outerClassName}`}
+          x-placement={placement}
+        >
+          <span className={`tooltip-inner ${innerClassName}`} id={`${targetId}-content`}>
+            {tooltipRender}
+            <span ref={arrowProps.ref} className={arrowClassName} style={tooltipArrowStyle} />
+          </span>
+        </span>
+      )}
+    </ReactPopper>
   );
 };
 

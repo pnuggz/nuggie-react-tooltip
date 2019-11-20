@@ -8,7 +8,10 @@
     "native": false,
     "codeSandbox": true,
     "themeConfig": {},
-    "separator": "-"
+    "separator": "-",
+    "plugins": [
+      {}
+    ]
   },
   "entries": [
     {
@@ -33,6 +36,20 @@
   ],
   "props": [
     {
+      "key": "src\\index.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Tooltip",
+          "methods": [],
+          "actualName": "Tooltip",
+          "composes": [
+            "./tooltipWrapper"
+          ]
+        }
+      ]
+    },
+    {
       "key": "src\\tooltip.js",
       "value": [
         {
@@ -41,39 +58,6 @@
           "methods": [],
           "actualName": "Tooltip",
           "props": {
-            "targetDimLeft": {
-              "type": {
-                "name": "number"
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "0",
-                "computed": false
-              }
-            },
-            "targetDimTop": {
-              "type": {
-                "name": "number"
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "0",
-                "computed": false
-              }
-            },
-            "targetDimWidth": {
-              "type": {
-                "name": "number"
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "0",
-                "computed": false
-              }
-            },
             "targetId": {
               "type": {
                 "name": "string"
@@ -111,7 +95,7 @@
               "required": false,
               "description": "",
               "defaultValue": {
-                "value": "'auto'",
+                "value": "'top'",
                 "computed": false
               }
             },
@@ -151,6 +135,17 @@
             "placementPrefix": {
               "type": {
                 "name": "string"
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "'bs-tooltip-'",
+                "computed": false
+              }
+            },
+            "sourceRef": {
+              "type": {
+                "name": "object"
               },
               "required": false,
               "description": "",

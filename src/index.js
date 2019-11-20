@@ -5,11 +5,16 @@ import TooltipWrapper, {
 } from './tooltipWrapper';
 
 const Tooltip = props => {
-  const { idProp, children, tooltipRender, defaultDisplay } = props;
+  const { targetId, children, tooltipRender, defaultDisplay, placement } = props;
 
   return (
     <React.Fragment>
-      <TooltipWrapper idProp={idProp} tooltipRender={tooltipRender} defaultDisplay={defaultDisplay}>
+      <TooltipWrapper
+        targetId={targetId}
+        tooltipRender={tooltipRender}
+        defaultDisplay={defaultDisplay}
+        placement={placement}
+      >
         {children}
       </TooltipWrapper>
     </React.Fragment>

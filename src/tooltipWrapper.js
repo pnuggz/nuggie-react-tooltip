@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
+import './styles/index.css';
+
 import Tooltip, {
   propTypes as tooltipPropTypes,
   defaultProps as tooltipDefaultProps,
@@ -20,16 +22,16 @@ export const defaultProps = {
 };
 
 const TooltipWrapper = props => {
-  const { idProp, children, tooltipRender, defaultDisplay } = props;
+  const { targetId, children, tooltipRender, defaultDisplay, placement } = props;
 
   const [isDisplay, setIsDisplay] = useState(defaultDisplay);
 
-  let domNode = document.getElementById(idProp);
+  let domNode = document.getElementById(targetId);
   if (!domNode) {
     domNode = document.createElement('div');
-    domNode.setAttribute('id', idProp);
-    domNode.setAttribute('data-testid', idProp);
-    domNode.setAttribute('key', idProp);
+    domNode.setAttribute('id', targetId);
+    // domNode.setAttribute('data-testid', targetId);
+    domNode.setAttribute('key', targetId);
     document.body.appendChild(domNode);
   }
 
@@ -40,31 +42,24 @@ const TooltipWrapper = props => {
   };
 
   const hideTooltip = () => {
-    setIsDisplay(defaultDisplay);
+    setIsDisplay(!defaultDisplay);
   };
 
   const renderToolTip = () => {
-    if (!isDisplay) {
+    if (!isDisplay || !sourceRef) {
       return null;
     }
 
-    const { left, top, width } = sourceRef.current.getBoundingClientRect();
-
     return ReactDOM.createPortal(
-      <Tooltip
-        tooltipRender={tooltipRender}
-        targetDimLeft={left}
-        targetDimTop={top}
-        targetDimWidth={width}
-      />,
+      <Tooltip tooltipRender={tooltipRender} sourceRef={sourceRef.current} placement={placement} />,
       domNode,
     );
   };
 
   const tooltipWrapper = () => (
     <span
-      key={idProp}
-      idProp={idProp}
+      key={targetId}
+      id={targetId}
       onMouseEnter={showTooltip}
       onMouseLeave={hideTooltip}
       onFocus={showTooltip}
@@ -72,7 +67,7 @@ const TooltipWrapper = props => {
       ref={sourceRef}
       tabIndex="0"
       role="button"
-      aria-describedby={`${idProp}-content`}
+      aria-describedby={`${targetId}-content`}
     >
       {children}
     </span>
