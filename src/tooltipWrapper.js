@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-import './styles/index.css';
-
 import Tooltip, {
   propTypes as tooltipPropTypes,
   defaultProps as tooltipDefaultProps,
