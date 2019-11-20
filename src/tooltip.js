@@ -19,7 +19,7 @@ export const defaultProps = {
   placement: 'top',
   outerClassName: '',
   innerClassName: '',
-  arrowClassName: '',
+  arrowClassName: 'arrow',
   placementPrefix: 'bs-tooltip-',
   sourceRef: null,
 };
@@ -35,15 +35,6 @@ const Tooltip = props => {
     placementPrefix,
     sourceRef,
   } = props;
-
-  const tooltipArrowStyle = {
-    position: 'absolute',
-    bottom: -10,
-    left: 'calc(50% - 5px)',
-    borderWidth: 5,
-    borderStyle: 'solid',
-    borderColor: '#424242 transparent transparent transparent',
-  };
 
   const extendedModifiers = {
     offset: 0,
@@ -62,7 +53,7 @@ const Tooltip = props => {
         >
           <span className={`tooltip-inner ${innerClassName}`} id={`${targetId}-content`}>
             {tooltipRender}
-            <span ref={arrowProps.ref} className={arrowClassName} style={tooltipArrowStyle} />
+            <span ref={arrowProps.ref} className={arrowClassName} style={arrowProps.style} />
           </span>
         </span>
       )}
