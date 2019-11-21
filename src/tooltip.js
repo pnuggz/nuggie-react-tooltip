@@ -16,7 +16,7 @@ export const propTypes = {
 export const defaultProps = {
   targetId: 'nuggie-tooltip-default',
   tooltipRender: null,
-  placement: 'auto',
+  placement: 'top',
   outerClassName: '',
   innerClassName: '',
   arrowClassName: 'arrow',
@@ -31,7 +31,7 @@ const Tooltip = props => {
     outerClassName,
     innerClassName,
     arrowClassName,
-    placement,
+    placement: presetPlacement,
     placementPrefix,
     sourceRef,
   } = props;
@@ -43,18 +43,23 @@ const Tooltip = props => {
   };
 
   return (
-    <ReactPopper referenceElement={sourceRef} modifiers={extendedModifiers} placement={placement}>
+    <ReactPopper
+      referenceElement={sourceRef}
+      modifiers={extendedModifiers}
+      placement={presetPlacement}
+    >
       {({ ref, style, placement: popperPlacement, arrowProps }) => (
         <span
           ref={ref}
           style={style}
           className={`tooltip show ${placementPrefix + popperPlacement} ${outerClassName}`}
-          x-placement={placement}
+          data-placement={popperPlacement}
+          x-placement={popperPlacement}
         >
           <span className={`tooltip-inner ${innerClassName}`} id={`${targetId}-content`}>
             {tooltipRender}
-            <span ref={arrowProps.ref} className={arrowClassName} style={arrowProps.style} />
           </span>
+          <span ref={arrowProps.ref} className={arrowClassName} style={arrowProps.style} />
         </span>
       )}
     </ReactPopper>
