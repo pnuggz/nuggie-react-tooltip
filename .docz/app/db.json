@@ -10,137 +10,7 @@
     "themeConfig": {},
     "separator": "-"
   },
-  "entries": [
-    {
-      "key": "docs/Tooltip.mdx",
-      "value": {
-        "name": "Tooltip",
-        "id": "2d1a67cd7a0e8157f636b991b87d2aec",
-        "filepath": "docs/Tooltip.mdx",
-        "link": "",
-        "slug": "docs-tooltip",
-        "route": "/docs-tooltip",
-        "menu": "",
-        "headings": [
-          {
-            "slug": "tooltip",
-            "depth": 1,
-            "value": "Tooltip"
-          }
-        ]
-      }
-    }
-  ],
   "props": [
-    {
-      "key": "src\\tooltip.js",
-      "value": [
-        {
-          "description": "",
-          "displayName": "Tooltip",
-          "methods": [],
-          "actualName": "Tooltip",
-          "props": {
-            "targetId": {
-              "type": {
-                "name": "string"
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "'nuggie-tooltip-default'",
-                "computed": false
-              }
-            },
-            "tooltipRender": {
-              "type": {
-                "name": "union",
-                "value": [
-                  {
-                    "name": "node"
-                  },
-                  {
-                    "name": "string"
-                  }
-                ]
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "null",
-                "computed": false
-              }
-            },
-            "placement": {
-              "type": {
-                "name": "string"
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "'auto'",
-                "computed": false
-              }
-            },
-            "outerClassName": {
-              "type": {
-                "name": "string"
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "''",
-                "computed": false
-              }
-            },
-            "innerClassName": {
-              "type": {
-                "name": "string"
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "''",
-                "computed": false
-              }
-            },
-            "arrowClassName": {
-              "type": {
-                "name": "string"
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "'arrow'",
-                "computed": false
-              }
-            },
-            "placementPrefix": {
-              "type": {
-                "name": "string"
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "'bs-tooltip-'",
-                "computed": false
-              }
-            },
-            "sourceRef": {
-              "type": {
-                "name": "object"
-              },
-              "required": false,
-              "description": "",
-              "defaultValue": {
-                "value": "null",
-                "computed": false
-              }
-            }
-          }
-        }
-      ]
-    },
     {
       "key": "src\\tooltipWrapper.js",
       "value": [
@@ -186,6 +56,27 @@
           ]
         }
       ]
+    }
+  ],
+  "entries": [
+    {
+      "key": "docs/Tooltip.mdx",
+      "value": {
+        "name": "Tooltip",
+        "id": "2d1a67cd7a0e8157f636b991b87d2aec",
+        "filepath": "docs/Tooltip.mdx",
+        "link": "",
+        "slug": "docs-tooltip",
+        "route": "/docs-tooltip",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "tooltip",
+            "depth": 1,
+            "value": "Tooltip"
+          }
+        ]
+      }
     }
   ]
 }

@@ -23,22 +23,22 @@ const TooltipWrapper = props => {
   const { targetId, children, tooltipRender, defaultDisplay, placement } = props;
 
   const [isDisplay, setIsDisplay] = useState(defaultDisplay);
-  const [domNode, setDomNode] = useState(null)
+  const [domNode, setDomNode] = useState(null);
 
   useEffect(() => {
-    setDomNode(document.getElementById(targetId).parentNode)
-  }, [])
+    setDomNode(document.getElementById(targetId).parentNode);
+  }, []);
 
   const sourceRef = useRef(null);
 
   const showTooltip = () => {
-    if(isDisplay !== !defaultDisplay) {
+    if (isDisplay !== !defaultDisplay) {
       setIsDisplay(!defaultDisplay);
     }
   };
 
   const hideTooltip = () => {
-    if(isDisplay !== defaultDisplay) {
+    if (isDisplay !== defaultDisplay) {
       setIsDisplay(defaultDisplay);
     }
   };
@@ -55,7 +55,7 @@ const TooltipWrapper = props => {
   };
 
   return (
-    <span className={'tooltip-wrapper'} key={`${targetId}-wrapper`}>
+    <span className="tooltip-wrapper" key={`${targetId}-wrapper`}>
       <span
         key={targetId}
         id={targetId}
@@ -67,16 +67,13 @@ const TooltipWrapper = props => {
         tabIndex="0"
         role="button"
         aria-describedby={`${targetId}-content`}
-        style={{display: 'table-cell'}}
+        style={{ display: 'table-cell' }}
       >
         {children}
       </span>
       {renderToolTip()}
     </span>
   );
-
-  useEffect(() => {
-  }, [isDisplay]);
 };
 
 TooltipWrapper.propTypes = propTypes;
