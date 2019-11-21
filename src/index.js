@@ -6,7 +6,7 @@ import TooltipWrapper, {
 
 const Tooltip = props => {
   const {
-    targetId,
+    tooltipId,
     children,
     tooltipRender,
     defaultDisplay,
@@ -19,7 +19,7 @@ const Tooltip = props => {
   return (
     <React.Fragment>
       <TooltipWrapper
-        targetId={targetId}
+        tooltipId={tooltipId}
         tooltipRender={tooltipRender}
         defaultDisplay={defaultDisplay}
         placement={placement}

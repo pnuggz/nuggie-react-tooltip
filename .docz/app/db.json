@@ -33,6 +33,20 @@
   ],
   "props": [
     {
+      "key": "src\\index.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Tooltip",
+          "methods": [],
+          "actualName": "Tooltip",
+          "composes": [
+            "./tooltipWrapper"
+          ]
+        }
+      ]
+    },
+    {
       "key": "src\\tooltip.js",
       "value": [
         {
@@ -41,7 +55,7 @@
           "methods": [],
           "actualName": "Tooltip",
           "props": {
-            "targetId": {
+            "tooltipId": {
               "type": {
                 "name": "string"
               },
@@ -129,6 +143,30 @@
             "sourceRef": {
               "type": {
                 "name": "object"
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "null",
+                "computed": false
+              }
+            },
+            "onTooltipMouseOver": {
+              "type": {
+                "name": "custom",
+                "raw": "PropTypes.function"
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "null",
+                "computed": false
+              }
+            },
+            "onTooltipMouseLeave": {
+              "type": {
+                "name": "custom",
+                "raw": "PropTypes.function"
               },
               "required": false,
               "description": "",

@@ -9,7 +9,7 @@ import Tooltip, {
 
 export const propTypes = {
   defaultDisplay: PropTypes.bool,
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
   ...tooltipPropTypes,
 };
 
@@ -20,16 +20,16 @@ export const defaultProps = {
 };
 
 const TooltipWrapper = props => {
-  const { targetId, children, tooltipRender, defaultDisplay, placement } = props;
+  const { tooltipId, children, tooltipRender, defaultDisplay, placement } = props;
+
+  const sourceRef = useRef(null);
 
   const [isDisplay, setIsDisplay] = useState(defaultDisplay);
   const [domNode, setDomNode] = useState(null);
 
   useEffect(() => {
-    setDomNode(document.getElementById(targetId).parentNode);
+    setDomNode(document.getElementById(`${tooltipId}-tooltip-wrapper`));
   }, []);
-
-  const sourceRef = useRef(null);
 
   const showTooltip = () => {
     if (isDisplay !== !defaultDisplay) {
@@ -49,24 +49,20 @@ const TooltipWrapper = props => {
     }
 
     return ReactDOM.createPortal(
-      <Tooltip tooltipRender={tooltipRender} sourceRef={sourceRef.current} placement={placement} />,
+      <Tooltip tooltipRender={tooltipRender} sourceRef={sourceRef.current} placement={placement} onTooltipMouseOver={showTooltip} onTooltipMouseLeave={hideTooltip} />,
       domNode,
     );
   };
 
   return (
-    <span className="tooltip-wrapper" key={`${targetId}-wrapper`}>
+    <span key={`${tooltipId}-tooltip-wrapper`} id={`${tooltipId}-tooltip-wrapper`} className="tooltip-wrapper" >
       <span
-        key={targetId}
-        id={targetId}
-        onMouseEnter={showTooltip}
+        onMouseOver={showTooltip}
         onMouseLeave={hideTooltip}
         onFocus={showTooltip}
         onBlur={hideTooltip}
         ref={sourceRef}
         tabIndex="0"
-        role="button"
-        aria-describedby={`${targetId}-content`}
         style={{ display: 'table-cell' }}
       >
         {children}

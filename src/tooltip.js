@@ -3,18 +3,20 @@ import PropTypes from 'prop-types';
 import { Popper as ReactPopper } from 'react-popper';
 
 export const propTypes = {
-  targetId: PropTypes.string,
-  tooltipRender: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+  tooltipId: PropTypes.string.isRequired,
+  tooltipRender: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
   placement: PropTypes.string,
   outerClassName: PropTypes.string,
   innerClassName: PropTypes.string,
   arrowClassName: PropTypes.string,
   placementPrefix: PropTypes.string,
   sourceRef: PropTypes.object,
+  onTooltipMouseOver: PropTypes.function,
+  onTooltipMouseLeave: PropTypes.function
 };
 
 export const defaultProps = {
-  targetId: 'nuggie-tooltip-default',
+  tooltipId: 'nuggie-tooltip-default',
   tooltipRender: null,
   placement: 'top',
   outerClassName: '',
@@ -22,11 +24,13 @@ export const defaultProps = {
   arrowClassName: 'arrow',
   placementPrefix: 'bs-tooltip-',
   sourceRef: null,
+  onTooltipMouseOver: null,
+  onTooltipMouseLeave: null
 };
 
 const Tooltip = props => {
   const {
-    targetId,
+    tooltipId,
     tooltipRender,
     outerClassName,
     innerClassName,
@@ -34,6 +38,8 @@ const Tooltip = props => {
     placement: presetPlacement,
     placementPrefix,
     sourceRef,
+    onTooltipMouseOver,
+    onTooltipMouseLeave
   } = props;
 
   const extendedModifiers = {
@@ -55,8 +61,12 @@ const Tooltip = props => {
           className={`tooltip show ${placementPrefix + popperPlacement} ${outerClassName}`}
           data-placement={popperPlacement}
           x-placement={popperPlacement}
+          onMouseOver={onTooltipMouseOver}
+          onMouseLeave={onTooltipMouseLeave}
+          role="tooltip"
+          aria-describedby={`${tooltipId}-tooltip-content`}
         >
-          <span className={`tooltip-inner ${innerClassName}`} id={`${targetId}-content`}>
+          <span className={`tooltip-inner ${innerClassName}`} id={`${tooltipId}-content`}>
             {tooltipRender}
           </span>
           <span ref={arrowProps.ref} className={arrowClassName} style={arrowProps.style} />
